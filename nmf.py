@@ -76,6 +76,7 @@ def factorize(A,dim=10,iteration_num=100,seed=0):
     return normalize_V(U,V)
 
 # 非負値行列Aに対する非負値行列因子分解でえられる２つの行列U,Vを返す
+#Ended loop by min_imp
 def factorize_S(A,dim=10,min_imp=10**(-20),seed=0):
     # Aの行数と列数を得る
     dim_row,dim_column=shape(A)
@@ -128,7 +129,7 @@ def factorize_KL(A,dim=10,iteration_num=100,seed=0):
 
     #更新式を指定した回数だけ繰り返し適用する
     for i in range(iteration_num):
-        # 現在のA-UVのフロベニウスノルムの２乗の値costを計算する
+        #caluculate cost
         cost=KL_divergence(A,U*V)
         # 10回毎にcostを表示する
         #if i%10==0: print(cost)
@@ -174,7 +175,7 @@ def factorize_IS(A,dim=10,iteration_num=100,seed=0):
 
     #更新式を指定した回数だけ繰り返し適用する
     for i in range(iteration_num):
-        # 現在のA-UVのフロベニウスノルムの２乗の値costを計算する
+        #caluculate cost
         cost=KL_divergence(A,U*V)
         # 10回毎にcostを表示する
         #if i%10==0: print(cost)
